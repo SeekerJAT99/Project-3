@@ -7,6 +7,7 @@ public class MainMenuController : MonoBehaviour
     private UIDocument _document;
     private VisualElement _mainMenuVisualTree;
     private Button _playButton;
+    private Button _quitButton;
     [SerializeField] int SceneID;
 
     private void Awake()
@@ -14,15 +15,24 @@ public class MainMenuController : MonoBehaviour
         _document = GetComponent<UIDocument>();
         _mainMenuVisualTree = _document.rootVisualElement.Q("MainMenuVisualTree");
         _playButton = _mainMenuVisualTree.Q("PlayButton") as Button;
+        _quitButton = _mainMenuVisualTree.Q("QuitButton") as Button;
     }
 
     private void OnEnable()
     {
         _playButton.RegisterCallback<ClickEvent>(OnPlayButtonClick);
+        _quitButton.RegisterCallback<ClickEvent>(OnQuitButtonClick);
     }
     private void OnDisable()
     {
         _playButton.UnregisterCallback<ClickEvent>(OnPlayButtonClick);
+        _quitButton.UnregisterCallback<ClickEvent>(OnQuitButtonClick);
+    }
+
+    private void OnQuitButtonClick(ClickEvent evt)
+    {
+        _mainMenuVisualTree.style.display = DisplayStyle.None;
+        Application.Quit();
     }
 
     private void OnPlayButtonClick(ClickEvent evt)
