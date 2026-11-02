@@ -30,12 +30,6 @@ public class MainMenuController : MonoBehaviour
         _playButton.UnregisterCallback<ClickEvent>(OnPlayButtonClick);
         _quitButton.UnregisterCallback<ClickEvent>(OnQuitButtonClick);
     }
-
-    private void OnQuitButtonClick(ClickEvent evt)
-    {
-        _mainMenuVisualTree.style.display = DisplayStyle.None;
-    }
-
     private void OnPlayButtonClick(ClickEvent evt)
     {
         _mainMenuVisualTree.style.display = DisplayStyle.None;
@@ -53,5 +47,15 @@ public class MainMenuController : MonoBehaviour
     void Update()
     {
         
+    }
+    private void OnQuitButtonClick(ClickEvent evt)
+    {
+        _mainMenuVisualTree.style.display = DisplayStyle.None;
+        //Debug.Log("Quit Button Clicked");
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
     }
 }
