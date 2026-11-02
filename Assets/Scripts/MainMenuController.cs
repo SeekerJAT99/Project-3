@@ -10,6 +10,8 @@ public class MainMenuController : MonoBehaviour
     private Button _quitButton;
     [SerializeField] int SceneID;
 
+    
+
     private void Awake()
     {
         _document = GetComponent<UIDocument>();
@@ -32,7 +34,6 @@ public class MainMenuController : MonoBehaviour
     private void OnQuitButtonClick(ClickEvent evt)
     {
         _mainMenuVisualTree.style.display = DisplayStyle.None;
-        Application.Quit();
     }
 
     private void OnPlayButtonClick(ClickEvent evt)
@@ -40,6 +41,8 @@ public class MainMenuController : MonoBehaviour
         _mainMenuVisualTree.style.display = DisplayStyle.None;
         SceneManager.LoadScene(SceneID);
     }
+
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
