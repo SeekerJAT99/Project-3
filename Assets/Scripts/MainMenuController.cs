@@ -50,12 +50,7 @@ public class MainMenuController : MonoBehaviour
     }
     private void OnQuitButtonClick(ClickEvent evt)
     {
-        _mainMenuVisualTree.style.display = DisplayStyle.None;
-        //Debug.Log("Quit Button Clicked");
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
+        Debug.Log("Quit Button Clicked");
         Application.Quit();
-#endif
     }
 }
